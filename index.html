@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17112d">
+<title>CAT Study OS</title>
+<style>
+:root{--bg:#100d1c;--panel:#1a1530;--panel2:#211a3b;--border:#342952;--text:#f7f3ff;--muted:#aaa0c7;--purple:#a78bfa;--pink:#f0abfc;--green:#86efac;--yellow:#fcd34d;--red:#fca5a5;--shadow:0 18px 50px #0003}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#34205c 0,transparent 35%),radial-gradient(ellipse at 90% 15%,#2b1c50 0,transparent 30%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;color:var(--text);background:linear-gradient(135deg,#8b5cf6,#c084fc);padding:11px 15px;border-radius:12px;font-weight:700;transition:transform .15s,opacity .15s}button:hover{transform:translateY(-1px)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}.secondary{background:#30264b;border:1px solid #4a3a6b}.danger{background:#48243b;border:1px solid #74344f}.small{padding:7px 10px;font-size:12px;border-radius:9px}.wrap{max-width:1200px;margin:auto;padding:26px 20px 48px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:25px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #8b5cf644}.brand h1{font-size:22px;margin:0;letter-spacing:-.5px}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.topright{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{border:1px solid var(--border);background:#211a3bcc;border-radius:999px;padding:8px 12px;color:#d9d0f2;font-size:12px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-bottom:18px}.card{background:linear-gradient(150deg,#211a3bee,#171329f5);border:1px solid var(--border);border-radius:22px;padding:20px;box-shadow:var(--shadow);min-width:0}.eyebrow{color:var(--pink);text-transform:uppercase;letter-spacing:1.7px;font-size:10px;font-weight:800}.hero h2{font-size:clamp(23px,4vw,34px);line-height:1.15;letter-spacing:-1px;margin:9px 0}.muted{color:var(--muted)}.timer-layout{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.clock{font-size:clamp(42px,7vw,62px);font-weight:800;letter-spacing:-2px;font-variant-numeric:tabular-nums;line-height:1.2}.timer-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{font-size:12px;color:#c7bcdf;font-weight:700}.field input,.field select,.field textarea,input,select,textarea{background:#100d1d;color:var(--text);border:1px solid #45365f;border-radius:10px;padding:10px 11px;outline:none;width:100%;min-width:0}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px #a78bfa22}.field textarea{resize:vertical;min-height:90px}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}.timer-side{display:flex;flex-direction:column;gap:12px;min-width:160px}.ring{width:125px;height:125px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--purple) var(--progress,0%),#392b55 0);position:relative;margin:auto}.ring:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#1a1530}.ring-content{position:relative;text-align:center}.ring-content strong{display:block;font-size:25px}.ring-content span{font-size:10px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px}.stat{padding:16px;border-radius:17px;background:#1b1630;border:1px solid var(--border)}.stat .label{font-size:12px;color:var(--muted)}.stat .value{font-size:24px;font-weight:800;margin:5px 0 2px;letter-spacing:-.5px}.stat .sub{font-size:11px;color:#b5a9d1}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.section-head h3{margin:0;font-size:17px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}.subject-list{display:flex;flex-direction:column;gap:14px}.subject-row{display:grid;grid-template-columns:62px 1fr 70px;gap:10px;align-items:center}.subject-tag{font-size:12px;font-weight:800}.bar{height:8px;background:#392d54;border-radius:999px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#8b5cf6,#f0abfc);width:0}.subject-time{text-align:right;font-size:12px;color:#e4d9ff;font-variant-numeric:tabular-nums}.week-chart{height:145px;display:flex;align-items:end;gap:10px;padding:12px 3px 0}.daycol{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%;justify-content:end;min-width:0}.daybarwrap{height:105px;width:100%;display:flex;align-items:end;justify-content:center}.daybar{width:min(32px,80%);border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#e9a8ff,#8b5cf6);min-height:3px;transition:height .3s}.daylabel{font-size:10px;color:var(--muted)}.dayval{font-size:9px;color:#d9cff2;white-space:nowrap}.goalline{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin:13px 0 6px}.progress{height:9px;background:#3a2c54;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6,#86efac);border-radius:999px}.log-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.log-form .wide{grid-column:1/-1}.log-list{display:flex;flex-direction:column;gap:9px;margin-top:15px}.log-item{display:flex;gap:12px;align-items:flex-start;padding:12px;background:#171228;border:1px solid #33264e;border-radius:13px}.log-dot{width:9px;height:9px;border-radius:50%;background:var(--purple);margin-top:7px;flex-shrink:0}.log-body{flex:1;min-width:0}.log-title{font-weight:750;overflow-wrap:anywhere}.log-meta{font-size:11px;color:var(--muted);margin-top:3px}.log-notes{font-size:12px;color:#d4c9e9;white-space:pre-wrap;overflow-wrap:anywhere;margin-top:7px}.empty{padding:24px;text-align:center;color:var(--muted);border:1px dashed #44365f;border-radius:13px;font-size:13px}.tabs{display:flex;gap:7px;flex-wrap:wrap}.tab{padding:8px 11px;background:#241c3d;border:1px solid #3b2d56;border-radius:10px;color:#bdb1d8;font-size:12px}.tab.active{background:#5b3b92;color:white;border-color:#8b5cf6}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#8f84aa;font-size:11px;margin-top:20px;padding:0 4px}.notice{padding:10px 12px;border-radius:11px;background:#211c3b;border:1px solid #40335e;color:#d4c8ee;font-size:12px;margin-top:12px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#f5eaff;color:#23133c;padding:12px 18px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);z-index:10;display:none;max-width:90vw;text-align:center}.pomodoro-label{font-size:11px;color:var(--pink);font-weight:800;letter-spacing:1px;margin-bottom:3px}.hidden{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.timer-side{flex-direction:row;align-items:center;justify-content:space-between}.ring{width:95px;height:95px;flex-shrink:0}.ring-content strong{font-size:20px}.stats{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.topbar{align-items:flex-start}.wrap{padding:18px 13px 35px}.card{padding:16px}.timer-layout{grid-template-columns:1fr}.timer-side{order:-1}.timer-side .field{flex:1}.clock{font-size:52px}}
+@media(max-width:420px){.formrow,.log-form,.settings-grid{grid-template-columns:1fr}.log-form .wide{grid-column:auto}.subject-row{grid-template-columns:52px 1fr 60px}.brand h1{font-size:19px}.topright .pill{display:none}.timer-controls button{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar">
+ <div class="brand"><div class="logo">✦</div><div><h1>CAT Study OS</h1><p>Small sessions. Serious progress.</p></div></div>
+ <div class="topright"><span class="pill" id="todayLabel">Today</span><button class="secondary small" id="exportBtn">Export backup</button><button class="secondary small" id="importBtn">Import</button><input type="file" id="importFile" accept="application/json" class="hidden"></div>
+</header>
+<section class="hero">
+ <div class="card">
+  <div class="eyebrow">Focus room · <span id="sessionState">Ready when you are</span></div>
+  <h2>Make today's hours<br>count.</h2>
+  <p class="muted" style="margin:0 0 17px;font-size:13px">Choose a CAT section, then start your focus timer. Time is saved on this device.</p>
+  <div class="timer-layout">
+   <div>
+    <div class="pomodoro-label" id="modeLabel">FOCUS SESSION</div><div class="clock" id="timerDisplay">25:00</div>
+    <div class="timer-controls"><button id="startBtn">▶ Start focus</button><button class="secondary" id="pauseBtn" disabled>Ⅱ Pause</button><button class="secondary" id="finishBtn" disabled>✓ Finish</button><button class="secondary" id="resetBtn">↺ Reset</button></div>
+   </div>
+   <div class="timer-side">
+    <div class="ring" id="ring"><div class="ring-content"><strong id="ringNum">25</strong><span id="ringCaption">MINUTES</span></div></div>
+    <div class="field"><label for="subjectSelect">Study section</label><select id="subjectSelect"><option value="VARC">VARC</option><option value="DILR">DILR</option><option value="QA">QA</option><option value="General">General / Mock test</option></select></div>
+    <div class="field"><label for="topicInput">Topic (optional)</label><input id="topicInput" placeholder="e.g. RC inference"></div>
+   </div>
+  </div>
+  <div class="notice" id="timerHint">Timer continues accurately if you switch tabs or refresh. Finish a session to save it to your study log.</div>
+ </div>
+ <div class="card">
+  <div class="section-head"><div><div class="eyebrow">Your weekly target</div><h3 style="margin-top:5px">Build consistency</h3></div><span style="font-size:25px">🎯</span></div>
+  <div class="goalline"><span>Weekly progress</span><strong id="weeklyProgressText">0h / 20h</strong></div><div class="progress"><span id="weeklyProgressBar" style="width:0%"></span></div>
+  <div class="goalline"><span>Daily target</span><strong id="dailyProgressText">0m / 3h</strong></div><div class="progress"><span id="dailyProgressBar" style="width:0%"></span></div>
+  <div class="formrow" style="margin-top:17px">
+   <div class="field"><label for="dailyGoal">Daily goal (hours)</label><input type="number" id="dailyGoal" min="0.25" max="24" step="0.25" value="3"></div>
+   <div class="field"><label for="weeklyGoal">Weekly goal (hours)</label><input type="number" id="weeklyGoal" min="1" max="168" step="1" value="20"></div>
+  </div>
+  <button id="saveGoals" class="secondary" style="width:100%;margin-top:10px">Save goals</button>
+  <div class="notice">Your goals should challenge you without sacrificing sleep or recovery. Adjust them as your schedule changes.</div>
+ </div>
+</section>
+<section class="stats">
+ <div class="stat"><div class="label">Today</div><div class="value" id="todayTotal">0m</div><div class="sub">Focused study</div></div>
+ <div class="stat"><div class="label">This week</div><div class="value" id="weekTotal">0h</div><div class="sub">Monday–Sunday</div></div>
+ <div class="stat"><div class="label">This month</div><div class="value" id="monthTotal">0h</div><div class="sub">Calendar month</div></div>
+ <div class="stat"><div class="label">Current streak</div><div class="value" id="streakTotal">0 days</div><div class="sub" id="consistencyText">0% this week</div></div>
+</section>
+<section class="two-col">
+ <div class="card">
+  <div class="section-head"><h3>Weekly study rhythm</h3><span class="muted" style="font-size:11px">Hours per day</span></div>
+  <div class="week-chart" id="weekChart"></div>
+  <div class="goalline"><span>Consistency this week</span><strong id="consistencyPct">0%</strong></div><div class="progress"><span id="consistencyBar" style="width:0%"></span></div>
+ </div>
+ <div class="card">
+  <div class="section-head"><h3>Time by section</h3><span class="muted" style="font-size:11px">This week</span></div>
+  <div class="subject-list" id="subjectStats"></div>
+  <div class="notice">Use section tracking to balance VARC, DILR and QA rather than over-studying only your favourite area.</div>
+ </div>
+</section>
+<section class="two-col">
+ <div class="card">
+  <div class="section-head"><h3>Study log</h3><span class="muted" style="font-size:11px">Add revision notes</span></div>
+  <form id="logForm" class="log-form">
+   <div class="field"><label for="logSubject">Section</label><select id="logSubject"><option>VARC</option><option>DILR</option><option>QA</option><option>General</option></select></div>
+   <div class="field"><label for="logMinutes">Study minutes</label><input id="logMinutes" type="number" min="1" max="1440" value="30" required></div>
+   <div class="field wide"><label for="logTopic">Topic / activity</label><input id="logTopic" placeholder="e.g. Percentages practice" required maxlength="120"></div>
+   <div class="field wide"><label for="logNotes">Revision notes / mistakes</label><textarea id="logNotes" placeholder="What did you learn? What should you revise?"></textarea></div>
+   <div class="field"><label for="logDate">Date</label><input id="logDate" type="date" required></div>
+   <div style="display:flex;align-items:end"><button type="submit" style="width:100%">＋ Add study log</button></div>
+  </form>
+  <div class="notice">Manual log entries count toward your totals and goals, just like timed sessions.</div>
+ </div>
+ <div class="card">
+  <div class="section-head"><h3>Recent activity</h3><button class="secondary small" id="clearLogsBtn">Clear all</button></div>
+  <div class="tabs" style="margin-bottom:12px"><button class="tab active" data-filter="all">All</button><button class="tab" data-filter="timed">Timer</button><button class="tab" data-filter="manual">Manual</button></div>
+  <div id="logList" class="log-list"></div>
+ </div>
+</section>
+<section class="two-col">
+ <div class="card">
+  <div class="section-head"><h3>Pomodoro settings</h3><span>🍅</span></div>
+  <div class="settings-grid">
+   <div class="field"><label for="focusMins">Focus (minutes)</label><input id="focusMins" type="number" min="5" max="180" value="25"></div>
+   <div class="field"><label for="breakMins">Break (minutes)</label><input id="breakMins" type="number" min="1" max="60" value="5"></div>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button id="savePomodoro" class="secondary">Save settings</button><button id="startBreak" class="secondary">Start break</button></div>
+  <div class="notice">When a focus countdown ends, the app alerts you. Study time is counted only while a focus session is active, not during breaks or pauses.</div>
+ </div>
+ <div class="card">
+  <div class="section-head"><h3>Monthly overview</h3><span class="muted" style="font-size:11px" id="monthLabel"></span></div>
+  <div id="monthSummary" class="subject-list"></div>
+  <div class="notice">Your progress is stored locally in this browser. Export a backup regularly, especially before clearing browser data or changing devices.</div>
+ </div>
+</section>
+<footer class="foot"><span>CAT Study OS · Private by design · No account required</span><span>Local browser storage · Free to use</span></footer>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(() => {
+const KEY='cat-study-os-v1';
+const $=id=>document.getElementById(id);
+const now=()=>Date.now();
+const dateKey=(d=new Date())=>{const x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
+const dateFromKey=k=>new Date(`${k}T12:00:00`);
+const mondayKey=(d=new Date())=>{const x=new Date(d);x.setHours(12,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return dateKey(x)};
+const safeNum=(v,min,max,def)=>{v=Number(v);return Number.isFinite(v)?Math.min(max,Math.max(min,v)):def};
+const defaults=()=>({sessions:[],goals:{daily:3,weekly:20},pomodoro:{focus:25,break:5},timer:{running:false,mode:'focus',subject:'VARC',topic:'',startedAt:null,elapsedMs:0,durationMs:25*60000,updatedAt:now()},manualFilter:'all'});
+let state;
+try{state=JSON.parse(localStorage.getItem(KEY))||defaults()}catch(e){state=defaults()}
+state.sessions=Array.isArray(state.sessions)?state.sessions:[];
+state.goals=state.goals||defaults().goals;state.pomodoro=state.pomodoro||defaults().pomodoro;state.timer=Object.assign(defaults().timer,state.timer||{});
+let ticker=null,toastTimer=null;
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){toast('Could not save: browser storage may be full. Export a backup.')} }
+function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.style.display='none',2800)}
+function fmt(ms){let s=Math.max(0,Math.floor(ms/1000)),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;return h?`${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`}
+function duration(ms){let m=Math.round(ms/60000);if(m<60)return `${m}m`;let h=Math.floor(m/60),r=m%60;return r?`${h}h ${r}m`:`${h}h`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function getElapsed(){const t=state.timer;if(!t.running||!t.startedAt)return t.elapsedMs||0;return (t.elapsedMs||0)+(now()-t.startedAt)}
+function daySessions(key){return state.sessions.filter(s=>s.date===key)}
+function totalForDay(key){return daySessions(key).reduce((a,s)=>a+s.ms,0)}
+function weekKeys(){const start=dateFromKey(mondayKey());return Array.from({length:7},(_,i)=>{const d=new Date(start);d.setDate(d.getDate()+i);return dateKey(d)})}
+function totalWeek(){return weekKeys().reduce((a,k)=>a+totalForDay(k),0)}
+function totalMonth(){const d=new Date();return state.sessions.filter(s=>{const x=dateFromKey(s.date);return x.getFullYear()===d.getFullYear()&&x.getMonth()===d.getMonth()}).reduce((a,s)=>a+s.ms,0)}
+function streak(){let count=0,d=new Date();d.setHours(12,0,0,0);if(totalForDay(dateKey(d))===0)d.setDate(d.getDate()-1);for(let i=0;i<370;i++){if(totalForDay(dateKey(d))>0){count++;d.setDate(d.getDate()-1)}else break}return count}
+function currentSessionDay(){return dateKey(new Date())}
+function addSession(ms,subject,topic,source='timer',date=dateKey()){if(!Number.isFinite(ms)||ms<1000)return;state.sessions.push({id:(crypto.randomUUID?crypto.randomUUID():String(now())+Math.random()),ms:Math.round(ms),subject:subject||'General',topic:topic||'',source,date,createdAt:now(),notes:''});persist()}
+function updateTimerUI(){
+ const t=state.timer,elapsed=getElapsed();
+ if(t.mode==='break'){const rem=Math.max(0,t.durationMs-elapsed);$('timerDisplay').textContent=fmt(rem);$('modeLabel').textContent='BREAK TIME';$('ringNum').textContent=Math.ceil(rem/60000);$('ringCaption').textContent='MIN LEFT';$('ring').style.setProperty('--progress',`${Math.min(100,elapsed/t.durationMs*100)}%`)}
+ else if(t.mode==='focus'&&t.durationMs){const rem=Math.max(0,t.durationMs-elapsed);$('timerDisplay').textContent=fmt(rem);$('modeLabel').textContent=t.running?'FOCUS IN PROGRESS':'FOCUS SESSION';$('ringNum').textContent=Math.ceil(rem/60000);$('ringCaption').textContent='MIN LEFT';$('ring').style.setProperty('--progress',`${Math.min(100,elapsed/t.durationMs*100)}%`)}
+ $('startBtn').disabled=t.running;$('pauseBtn').disabled=!t.running;$('finishBtn').disabled=!(t.running||t.elapsedMs>0);$('pauseBtn').textContent=t.running?'Ⅱ Pause':'Ⅱ Pause';
+ $('sessionState').textContent=t.running?(t.mode==='break'?'Break running':'Session running'):(t.elapsedMs>0?'Session paused':'Ready when you are');
+ $('subjectSelect').disabled=t.running;$('topicInput').disabled=t.running;
+}
+function render(){
+ const today=dateKey();$('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});$('logDate').value=$('logDate').value||today;
+ const td=totalForDay(today),tw=totalWeek(),tm=totalMonth(),dg=state.goals.daily*3600000,wg=state.goals.weekly*3600000;
+ $('todayTotal').textContent=duration(td);$('weekTotal').textContent=duration(tw);$('monthTotal').textContent=duration(tm);$('streakTotal').textContent=`${streak()} day${streak()===1?'':'s'}`;
+ const done=weekKeys().filter(k=>totalForDay(k)>=dg).length;const consistency=Math.round(done/7*100);
+ $('consistencyText').textContent=`${consistency}% weekly consistency`;$('consistencyPct').textContent=`${consistency}%`;$('consistencyBar').style.width=consistency+'%';
+ $('weeklyProgressText').textContent=`${duration(tw)} / ${duration(wg)}`;$('weeklyProgressBar').style.width=Math.min(100,tw/wg*100)+'%';
+ $('dailyProgressText').textContent=`${duration(td)} / ${duration(dg)}`;$('dailyProgressBar').style.width=Math.min(100,td/dg*100)+'%';
+ $('dailyGoal').value=state.goals.daily;$('weeklyGoal').value=state.goals.weekly;
+ const keys=weekKeys(),max=Math.max(1,...keys.map(totalForDay));$('weekChart').innerHTML=keys.map(k=>{const ms=totalForDay(k),d=dateFromKey(k);return `<div class="daycol"><div class="dayval">${ms?duration(ms):'—'}</div><div class="daybarwrap"><div class="daybar" style="height:${Math.max(3,ms/max*100)}%"></div></div><div class="daylabel">${d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)}</div></div>`}).join('');
+ const colors={VARC:'#c4b5fd',DILR:'#f0abfc',QA:'#86efac',General:'#fcd34d'};const subjects=['VARC','DILR','QA','General'];$('subjectStats').innerHTML=subjects.map(sub=>{const ms=state.sessions.filter(s=>s.subject===sub&&keys.includes(s.date)).reduce((a,s)=>a+s.ms,0);return `<div class="subject-row"><div class="subject-tag" style="color:${colors[sub]}">${sub}</div><div><div class="bar"><span style="width:${Math.min(100,ms/Math.max(1,tw)*100)}%;background:${colors[sub]}"></span></div></div><div class="subject-time">${duration(ms)}</div></div>`}).join('');
+ $('monthLabel').textContent=new Date().toLocaleDateString(undefined,{month:'long',year:'numeric'});
+ const d=new Date(),monthKeys=state.sessions.filter(s=>{const x=dateFromKey(s.date);return x.getFullYear()===d.getFullYear()&&x.getMonth()===d.getMonth()});
+ const msubjects=['VARC','DILR','QA','General'];$('monthSummary').innerHTML=msubjects.map(sub=>{const ms=monthKeys.filter(s=>s.subject===sub).reduce((a,s)=>a+s.ms,0);return `<div class="subject-row"><div class="subject-tag">${sub}</div><div><div class="bar"><span style="width:${Math.min(100,ms/Math.max(1,tm)*100)}%"></span></div></div><div class="subject-time">${duration(ms)}</div></div>`}).join('')+`<div class="notice">${monthKeys.length} logged session${monthKeys.length===1?'':'s'} this month · ${new Set(monthKeys.map(s=>s.date)).size} active day(s)</div>`;
+ renderLogs();updateTimerUI();
+}
+function renderLogs(){
+ const filter=state.manualFilter||'all';document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
+ let logs=[...state.sessions].filter(s=>filter==='all'||(filter==='timed'?s.source==='timer':s.source!=='timer')).sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.createdAt||0)-(a.createdAt||0)).slice(0,25);
+ $('logList').innerHTML=logs.length?logs.map(s=>`<div class="log-item"><div class="log-dot"></div><div class="log-body"><div class="log-title">${esc(s.topic||s.subject)} <span class="muted" style="font-weight:500">· ${duration(s.ms)}</span></div><div class="log-meta">${esc(s.subject)} · ${esc(s.date)} · ${s.source==='timer'?'Timer':'Manual entry'}</div>${s.notes?`<div class="log-notes">${esc(s.notes)}</div>`:''}</div><button class="secondary small" data-delete="${esc(s.id)}" aria-label="Delete log">×</button></div>`).join(''):'<div class="empty">No study sessions yet. Start the timer or add your first log.</div>';
+ document.querySelectorAll('[data-delete]').forEach(b=>b.addEventListener('click',()=>{state.sessions=state.sessions.filter(s=>s.id!==b.dataset.delete);persist();render();toast('Study entry deleted')}));
+}
+function startTimer(mode='focus'){
+ const t=state.timer;if(t.running)return;
+ if(mode==='focus'&&t.mode!=='focus'){t.mode='focus';t.elapsedMs=0;t.durationMs=state.pomodoro.focus*60000}
+ if(mode==='break'){t.mode='break';t.elapsedMs=0;t.durationMs=state.pomodoro.break*60000;t.subject='General';t.topic='Break'}
+ else if(t.mode!=='break'){t.mode='focus';t.durationMs=state.pomodoro.focus*60000}
+ t.subject=$('subjectSelect').value||t.subject||'VARC';t.topic=$('topicInput').value.trim()||t.topic||'';t.startedAt=now();t.running=true;t.updatedAt=now();persist();updateTimerUI();tickerStart();toast(mode==='break'?'Break started. Recharge!':'Focus session started. You’ve got this.');
+}
+function pauseTimer(){const t=state.timer;if(!t.running)return;t.elapsedMs=getElapsed();t.startedAt=null;t.running=false;t.updatedAt=now();persist();updateTimerUI();toast('Timer paused')}
+function finishTimer(auto=false){
+ const t=state.timer;if(!t.running&&!(t.elapsedMs>0))return;
+ const elapsed=getElapsed(),mode=t.mode;
+ if(mode==='focus'){addSession(elapsed,t.subject,t.topic,'timer',dateKey(new Date()));if(elapsed>=60000)toast(auto?'Focus finished — study time saved. Take a break!':'Study session saved. Nice work!');}
+ t.running=false;t.startedAt=null;t.elapsedMs=0;t.mode='focus';t.durationMs=state.pomodoro.focus*60000;t.updatedAt=now();persist();tickerStop();render();
+ if(auto&&mode==='focus'){try{if('Notification'in window&&Notification.permission==='granted')new Notification('CAT Study OS',{body:'Focus session complete. Time for a short break.'});else if(navigator.vibrate)navigator.vibrate([150,80,150])}catch(e){}}
+}
+function tickerStart(){tickerStop();ticker=setInterval(()=>{const t=state.timer,el=getElapsed();if(t.mode==='break'&&el>=t.durationMs){t.running=false;t.startedAt=null;t.elapsedMs=0;t.mode='focus';t.durationMs=state.pomodoro.focus*60000;persist();tickerStop();updateTimerUI();toast('Break complete. Ready for another focus session?');return}if(t.mode==='focus'&&el>=t.durationMs){finishTimer(true);return}updateTimerUI();},250); }
+function tickerStop(){if(ticker){clearInterval(ticker);ticker=null}}
+$('startBtn').addEventListener('click',()=>startTimer('focus'));
+$('pauseBtn').addEventListener('click',pauseTimer);
+$('finishBtn').addEventListener('click',()=>finishTimer(false));
+$('resetBtn').addEventListener('click',()=>{const t=state.timer;t.running=false;t.startedAt=null;t.elapsedMs=0;t.mode='focus';t.durationMs=state.pomodoro.focus*60000;persist();tickerStop();updateTimerUI();toast('Timer reset')});
+$('startBreak').addEventListener('click',()=>{if(state.timer.running)pauseTimer();state.timer.elapsedMs=0;startTimer('break')});
+$('subjectSelect').addEventListener('change',e=>{state.timer.subject=e.target.value;persist()});
+$('topicInput').addEventListener('input',e=>{state.timer.topic=e.target.value;persist()});
+$('saveGoals').addEventListener('click',()=>{state.goals.daily=safeNum($('dailyGoal').value,.25,24,3);state.goals.weekly=safeNum($('weeklyGoal').value,1,168,20);persist();render();toast('Study goals saved')});
+$('savePomodoro').addEventListener('click',()=>{state.pomodoro.focus=safeNum($('focusMins').value,5,180,25);state.pomodoro.break=safeNum($('breakMins').value,1,60,5);if(!state.timer.running){state.timer.durationMs=state.pomodoro.focus*60000;state.timer.elapsedMs=0;state.timer.mode='focus'}persist();render();toast('Pomodoro settings saved')});
+$('logForm').addEventListener('submit',e=>{e.preventDefault();const mins=safeNum($('logMinutes').value,1,1440,30),topic=$('logTopic').value.trim();if(!topic){toast('Please add a topic or activity');return}const notes=$('logNotes').value.trim(),date=$('logDate').value||dateKey();addSession(mins*60000,$('logSubject').value,topic,'manual',date);const s=state.sessions[state.sessions.length-1];s.notes=notes;persist();$('logTopic').value='';$('logNotes').value='';$('logMinutes').value=30;render();toast('Study log added')});
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{state.manualFilter=b.dataset.filter;persist();renderLogs()}));
+$('clearLogsBtn').addEventListener('click',()=>{if(confirm('Delete ALL study log entries from this device? This cannot be undone unless you have a backup.')){state.sessions=[];persist();render();toast('All study entries cleared')}});
+$('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'CAT Study OS',version:1,exportedAt:new Date().toISOString(),state},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`cat-study-os-backup-${dateKey()}.json`;a.click();URL.revokeObjectURL(url);toast('Backup exported')});
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;try{const data=JSON.parse(await file.text()),incoming=data.state||data;if(!Array.isArray(incoming.sessions)||!incoming.goals)throw new Error('Invalid backup');if(!confirm('Import this backup and replace the current study data? Export current data first if you want to keep it.'))return;state=Object.assign(defaults(),incoming);state.timer.running=false;state.timer.startedAt=null;persist();render();toast('Backup imported')}catch(err){toast('Could not import that file. Choose a CAT Study OS JSON backup.')}finally{e.target.value=''}});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&state.timer.running){updateTimerUI()}});
+window.addEventListener('beforeunload',persist);
+$('focusMins').value=state.pomodoro.focus;$('breakMins').value=state.pomodoro.break;$('subjectSelect').value=state.timer.subject||'VARC';$('topicInput').value=state.timer.topic||'';
+if(state.timer.running){ // Recover elapsed time using the original start timestamp; wall-clock time remains accurate across refreshes.
+ if(!state.timer.startedAt){state.timer.running=false}else tickerStart()
+}else if(state.timer.mode==='focus'&&!state.timer.elapsedMs){state.timer.durationMs=state.pomodoro.focus*60000}
+render();
+})();
+</script>
+</body>
+</html>
